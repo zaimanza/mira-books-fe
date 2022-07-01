@@ -73,6 +73,7 @@
 <script>
   const applicant_list = document.querySelector('#applicant-list')
   const getAllApplicants = async () => {
+    list_applicant = []
     list_applicant = await $.ajax(
       "https://hdmerchantbackend.herokuapp.com/applicant/all", {
       type: 'get', // http// data to submit
@@ -82,19 +83,20 @@
       }
     })
 
-    const tr = document.createElement('tr')
-    const applicant_name_td = document.createElement('td')
-    const ic_num_td = document.createElement('td')
-    const phone_num_td = document.createElement('td')
-    const email_td = document.createElement('td')
-    const address_td = document.createElement('td')
-    const gender_td = document.createElement('td')
-    const area_td = document.createElement('td')
-    const state_td = document.createElement('td')
-    const delete_btn_td = document.createElement('td')
-    const edit_btn_td = document.createElement('td')
-
     for (const applicant of list_applicant) {
+
+      const tr = document.createElement('tr')
+      const applicant_name_td = document.createElement('td')
+      const ic_num_td = document.createElement('td')
+      const phone_num_td = document.createElement('td')
+      const email_td = document.createElement('td')
+      const address_td = document.createElement('td')
+      const gender_td = document.createElement('td')
+      const area_td = document.createElement('td')
+      const state_td = document.createElement('td')
+      const delete_btn_td = document.createElement('td')
+      const edit_btn_td = document.createElement('td')
+
       applicant_name_td.textContent = applicant?.applicant_name
       ic_num_td.textContent = applicant?.ic_num
       phone_num_td.textContent = applicant?.phone_num
@@ -133,7 +135,6 @@
 
       applicant_list.appendChild(tr)
     }
-
   }
   getAllApplicants()
 </script>
@@ -142,8 +143,12 @@
   var list_applicant = []
   applicant_list.addEventListener('click', async (e) => {
     if (e.target.className == 'Edit') {
-   console.log(   list_applicant[$("tr").index(tr) - 1]?.ic_num)
-    window.location.replace("editApplicant.html");
+      const tr = e.target.parentElement
+  
+       const index_of_item=$("tr").index(tr)-1
+     
+    
+      window.location.replace("editApplicant.html?ic_num=" + list_applicant[index_of_item]?.ic_num);
     }
 
     if (e.target.className == 'Delete') {

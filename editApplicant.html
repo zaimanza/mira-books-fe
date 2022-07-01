@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Add Applicant</title>
+    <title> Edit Applicant</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -52,7 +52,7 @@
         </div>
     </nav>
     <div class="container py-5 h-100">
-        <h1 class="pb-3"> Add Applicant</h1>
+        <h1 class="pb-3"> Edit Applicant</h1>
         <div class="row">
             <div class="col-8">
                 <form>
@@ -97,45 +97,68 @@
             </div>
             <div class="col-4">
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="displayApplicant.html" class="btn btn-secondary border border-dark">Records</a>
-                    <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add
-                        Record</button>
+                    <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Save</button>
                 </div>
             </div>
             </form>
         </div>
 </body>
 <script>
-    const add_attribute_button = document.querySelector('#add_attribute_button')
+const ic_num_param =  new URLSearchParams(window.location.search).get('ic_num')
 
-    add_attribute_button.addEventListener('click', async (e) => {
-        const applicant_name = document.querySelector('input[name="applicant_name"]').value
-        const ic_num = document.querySelector('input[name="ic_num"]').value
-        const phone_num = document.querySelector('input[name="phone_num"]').value
-        const email = document.querySelector('input[name="email"]').value
-        const address = document.querySelector('input[name="address"]').value
-        const gender = document.querySelector('input[name="gender"]').value
-        const area = document.querySelector('input[name="area"]').value
-        const state = document.querySelector('input[name="state"]').value
-        const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/add", {
-            type: 'post', // http method
-            data: {
-                applicant_name: applicant_name,
-                ic_num: ic_num,
-                phone_num: phone_num,
-                email: email,
-                address: address,
-                gender: gender,
-                area: area,
-                state: state
-            }, // data to submit
+    const initiaFunction =async () => {
+               const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/"+ic_num_param, {
+            type: 'get',
             success: function (data, status, xhr) { },
             error: function (jqXhr, textStatus, errorMessage) {
                 $('p').append('Error: ' + errorMessage);
             }
         })
-        window.location.replace("displayApplicant.html");
-    });
+        console.log(returnData)
+        const applicant_name = document.querySelector('input[name="applicant_name"]').value=returnData?.applicant_name
+        const ic_num = document.querySelector('input[name="ic_num"]').value=returnData?.ic_num
+        const phone_num = document.querySelector('input[name="phone_num"]').value=returnData?.phone_num
+        const email = document.querySelector('input[name="email"]').value=returnData?.email
+        const address = document.querySelector('input[name="address"]').value=returnData?.address
+        const gender = document.querySelector('input[name="gender"]').value=returnData?.gender
+        const area = document.querySelector('input[name="area"]').value=returnData?.area
+        const state = document.querySelector('input[name="state"]').value=returnData?.state
+ 
+    }
+    initiaFunction()
+</script>
+
+<script>
+     const add_attribute_button = document.querySelector('#add_attribute_button')
+
+  add_attribute_button.addEventListener('click', async (e) => {
+    const applicant_name = document.querySelector('input[name="applicant_name"]').value
+    const ic_num = document.querySelector('input[name="ic_num"]').value
+    const phone_num = document.querySelector('input[name="phone_num"]').value
+    const email = document.querySelector('input[name="email"]').value
+    const address = document.querySelector('input[name="address"]').value
+    const gender = document.querySelector('input[name="gender"]').value
+    const area = document.querySelector('input[name="area"]').value
+    const state = document.querySelector('input[name="state"]').value
+    const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/update", {
+      type: 'post', // http method
+      data: {
+        applicant_name: applicant_name,
+        ic_num: ic_num,
+        phone_num: phone_num,
+        email: email,
+        address: address,
+        gender: gender,
+        area: area,
+        state: state
+      }, // data to submit
+      success: function (data, status, xhr) { },
+      error: function (jqXhr, textStatus, errorMessage) {
+        $('p').append('Error: ' + errorMessage);
+      }
+    })
+    window.location.replace("displayApplicant.html");
+  });
 </script>
 
 </html>

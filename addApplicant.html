@@ -2,139 +2,104 @@
 <html lang="en">
 
 <head>
-    <title> Applicant's Application Form</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+  <title> Add Applicant</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: #98AFC7;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="40">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="addApplicant.html">Applicant's Application Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              User
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="addApplicant.html">Applicant's Application Form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
-                    </li>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="addStaff.html">Staff</a></li>
+              <li><a class="dropdown-item" href="#">LogOut</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            User
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="addStaff.html">Staff</a></li>
-                            <li><a class="dropdown-item" href="#">LogOut</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container py-5 h-100">
+    <h1 class="pb-3"> Applicant's Application Form</h1>
+    <div class="row">
+      <div class="col-8">
+        <form>
+          <div class="form-outline mb-4">
+            <label> Applicant Name</label>
+            <input type="text" id="applicant_name" name="applicant_name" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label> IC Number</label>
+            <input type="tel" id="ic_num" name="ic_num" pattern="[0-9]{12}" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label> Phone Number</label>
+            <input type="tel" id="phone_num" name="phone_num" pattern="[0]{1}[0-9]{9}" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label>Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label>Address</label>
+            <input type="text" class="form-control" id="address" name="address" required></input>
+          </div>
+          <div class="form-outline mb-4">
+            <label>Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" required></input>
+          </div>
+          <div class="form-outline mb-4">
+            <label> Area </label>
+            <input type="text" id="area" name="area" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label> State </label>
+            <input type="text" id="state" name="state" class="form-control" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label>Upload Certificate</label>
+            <input class="form-control" id="cert" name="cert" type="file" id="formFile">
+          </div>
 
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+      </div>
+      <div class="col-4">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="displayApplicant.html" class="btn btn-secondary border border-dark">Records</a>
+          <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add Record</button>
         </div>
-    </nav>
-    <div class="container py-5 h-100">
-        <h1 class="pb-3"> Applicant's Application Form</h1>
-        <div class="row">
-            <div class="col-8">
-                <form>
-                    <div class="form-outline mb-4">
-                        <label> Applicant Name</label>
-                        <input type="text" id="applicant_name" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label> IC Number</label>
-                        <input type="tel" id="ic_num" name="ic_num" pattern="[0-9]{12}" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label> Phone Number</label>
-                        <input type="tel" id="phone_num" name="phone_num" pattern="[0]{1}[0-9]{9}" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label>Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label>Address</label>
-                        <textarea class="form-control" id="address" name="address" required></textarea>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label>Gender</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="male" checked>
-                            <label class="form-check-label" >
-                              Male
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="female">
-                            <label class="form-check-label">
-                              Female
-                            </label>
-                          </div>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label> Area </label>
-                        <input type="text" id="area" name="area" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                        <label> State </label>
-                        <select name=state id= "state" class="form-select"  >
-                            <option value="">Please Select State</option>
-                            <option value="Johor">Johor</option>
-                            <option value="Kedah">Kedah</option>
-                            <option value="Kelantan">Kelantan</option>
-                            <option value="Kuala Lumpur">Kuala Lumpur</option>
-                            <option value="Labuan">Labuan</option>
-                            <option value="Malacca">Malacca</option>
-                            <option value="Negeri Sembilan">Negeri Sembilan</option>
-                            <option value="Pahang">Pahang</option>
-                            <option value="Perak">Perak</option>
-                            <option value="Perlis">Perlis</option>
-                            <option value="Penang">Penang</option>
-                            <option value="Sabah">Sabah</option>
-                            <option value="Sarawak">Sarawak</option>
-                            <option value="Selangor">Selangor</option>
-                            <option value="Terengganu">Terengganu</option>
-                            </select>
-                    </div>
-
-                    <div class="form-outline mb-4">
-                        <label>Upload Certificate</label>
-                        <input class="form-control" id="cert" name="cert" type="file" id="formFile">
-                    </div>
-
-            </div>
-            <div class="col-4">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="displayApplicant.html" class="btn btn-secondary border border-dark">Records</a>
-                    <button type="submit" class="btn btn-secondary border border-dark" id="add_attribute_button">Add Record</button>
-                </div>
-            </div>
-        </form>
-        </div>
+      </div>
+      </form>
+    </div>
 </body>
 <script>
-    const add_attribute_button = document.querySelector('#add_attribute_button')
+  const add_attribute_button = document.querySelector('#add_attribute_button')
 
-    add_attribute_button.addEventListener('click', async (e) => {
+  add_attribute_button.addEventListener('click', async (e) => {
     const applicant_name = document.querySelector('input[name="applicant_name"]').value
     const ic_num = document.querySelector('input[name="ic_num"]').value
     const phone_num = document.querySelector('input[name="phone_num"]').value
@@ -143,24 +108,25 @@
     const gender = document.querySelector('input[name="gender"]').value
     const area = document.querySelector('input[name="area"]').value
     const state = document.querySelector('input[name="state"]').value
-  const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/add", {
-    type: 'post', // http method
-    data: {
-      applicant_name:applicant_name,
-      ic_num: ic_num,
-      phone_num: phone_num,
-      email: email,
-      address: address,
-      gender: gender,
-      area: area,
-      state: state
-    }, // data to submit
-    success: function(data, status, xhr) {},
-    error: function(jqXhr, textStatus, errorMessage) {
-      $('p').append('Error: ' + errorMessage);
-    }
-  })
+    const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/add", {
+      type: 'post', // http method
+      data: {
+        applicant_name: applicant_name,
+        ic_num: ic_num,
+        phone_num: phone_num,
+        email: email,
+        address: address,
+        gender: gender,
+        area: area,
+        state: state
+      }, // data to submit
+      success: function(data, status, xhr) {},
+      error: function(jqXhr, textStatus, errorMessage) {
+        $('p').append('Error: ' + errorMessage);
+      }
+    })
     window.location.replace("displayApplicant.html");
-}); 
+  });
 </script>
+
 </html>

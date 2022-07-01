@@ -140,7 +140,12 @@
 
 <script>
   var list_applicant = []
-  applicant_list.addEventListener('click', async(e) => {
+  applicant_list.addEventListener('click', async (e) => {
+    if (e.target.className == 'Edit') {
+   console.log(   list_applicant[$("tr").index(tr) - 1]?.ic_num)
+    window.location.replace("editApplicant.html");
+    }
+
     if (e.target.className == 'Delete') {
       const tr = e.target.parentElement
 
@@ -148,7 +153,7 @@
         "https://hdmerchantbackend.herokuapp.com/applicant/delete", {
         type: 'post', // http// data to submit
         data: {
-          ic_num: list_applicant[$("tr").index(tr)-1]?.ic_num,
+          ic_num: list_applicant[$("tr").index(tr) - 1]?.ic_num,
         },
         success: function (data, status, xhr) { },
         error: function (jqXhr, textStatus, errorMessage) {
@@ -156,7 +161,7 @@
         }
       })
 
-      if (return_data==true) {
+      if (return_data == true) {
         list_applicant.splice($("tr").index(tr), 1)
         tr.parentNode.removeChild(tr)
         console.table(list_applicant)

@@ -1,109 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <title>Applicant's Record</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-</head>
-<body style="background-color: #98AFC7;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="40">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link text-white" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="addApplicant.html">Applicant's Application Form</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
-              </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  User
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="addStaff.html">Staff</a></li>
-                  <li><a class="dropdown-item" href="#">LogOut</a></li>
-                </ul>
-              </li>
+<head>
+  <title>Applicant's Record</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #98AFC7;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="logo.jpg" alt="..." height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="addApplicant.html">Applicant</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              User
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="addStaff.html">Staff</a></li>
+              <li><a class="dropdown-item" href="#">LogOut</a></li>
             </ul>
-          </div>
-        </div>
-      </nav>
-    <div class="container py-5 h-100">
-        <h1 class="pb-3"> Applicant's Record</h1>
-        <table class="table table-light table-hover table-striped">
-                <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Applicant Name</th>
-                    <th>IC Number</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Gender</th>
-                    <th>Area</th>
-                    <th>State</th>
-                    <th>Option</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <div id="attribute-list" class=""></div>                   
-                        <a class="btn btn-sm btn-outline-primary" href="addApplicant.html" >Edit</a>
-                        <button type="button" class="btn btn-sm btn-outline-danger" @onclick = "Delete" >Delete</button>  
-                    
-                  </tr>
-                </tbody>
-          </table>
-        </div>
-        </body>
-        <script>
-          const add_attribute_button = document.querySelector('#add_attribute_button')
-      
-          add_attribute_button.addEventListener('click', async (e) => {
-          const applicant_name = document.querySelector('input[name="applicant_name"]').value
-          const ic_num = document.querySelector('input[name="ic_num"]').value
-          const phone_num = document.querySelector('input[name="phone_num"]').value
-          const email = document.querySelector('input[name="email"]').value
-          const address = document.querySelector('input[name="address"]').value
-          const gender = document.querySelector('input[name="gender"]').value
-          const area = document.querySelector('input[name="area"]').value
-          const state = document.querySelector('input[name="state"]').value
-        const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/add", {
-          type: 'post', // http method
-          data: {
-            applicant_name:applicant_name,
-            ic_num: ic_num,
-            phone_num: phone_num,
-            email: email,
-            address: address,
-            gender: gender,
-            area: area,
-            state: state
-          }, // data to submit
-          success: function(data, status, xhr) {},
-          error: function(jqXhr, textStatus, errorMessage) {
-            $('p').append('Error: ' + errorMessage);
-          }
-        })
-          window.location.replace("displayApplicant.html");
-      }); 
-      </script>
-        </html>
-        
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container py-5 h-100">
+    <h1 class="pb-3"> Applicant's Record</h1>
+    <table class="table table-light table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Applicant Name</th>
+          <th>IC Number</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>Area</th>
+          <th>State</th>
+          <th colspan="2">Option</th>
+        </tr>
+      </thead>
+      <tbody id="applicant-list">
+      </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  const applicant_list = document.querySelector('#applicant-list')
+  const getAllApplicants = async () => {
+    list_applicant = []
+    list_applicant = await $.ajax(
+      "https://hdmerchantbackend.herokuapp.com/applicant/all", {
+      type: 'get', // http// data to submit
+      success: function (data, status, xhr) { },
+      error: function (jqXhr, textStatus, errorMessage) {
+        $('p').append('Error: ' + errorMessage);
+      }
+    })
+
+    for (const applicant of list_applicant) {
+
+      const tr = document.createElement('tr')
+      const applicant_name_td = document.createElement('td')
+      const ic_num_td = document.createElement('td')
+      const phone_num_td = document.createElement('td')
+      const email_td = document.createElement('td')
+      const address_td = document.createElement('td')
+      const gender_td = document.createElement('td')
+      const area_td = document.createElement('td')
+      const state_td = document.createElement('td')
+      const delete_btn_td = document.createElement('td')
+      const edit_btn_td = document.createElement('td')
+
+      applicant_name_td.textContent = applicant?.applicant_name
+      ic_num_td.textContent = applicant?.ic_num
+      phone_num_td.textContent = applicant?.phone_num
+      email_td.textContent = applicant?.email
+      address_td.textContent = applicant?.address
+      gender_td.textContent = applicant?.gender
+      area_td.textContent = applicant?.area
+      state_td.textContent = applicant?.state
+      edit_btn_td.textContent = 'Edit'
+      delete_btn_td.textContent = 'Delete'
+
+
+      applicant_name_td.setAttribute('name', "applicant_name")
+      ic_num_td.setAttribute('name', "ic_num")
+      phone_num_td.setAttribute('name', "phone_num")
+      email_td.setAttribute('name', "email")
+      address_td.setAttribute('name', "address")
+      gender_td.setAttribute('name', "gender")
+      area_td.setAttribute('name', "area")
+      state_td.setAttribute('name', "state")
+      edit_btn_td.classList.add('Edit')
+      delete_btn_td.classList.add('Delete')
+
+
+      tr.appendChild(applicant_name_td)
+      tr.appendChild(ic_num_td)
+      tr.appendChild(phone_num_td)
+      tr.appendChild(email_td)
+      tr.appendChild(address_td)
+      tr.appendChild(gender_td)
+      tr.appendChild(area_td)
+      tr.appendChild(state_td)
+      tr.appendChild(edit_btn_td)
+      tr.appendChild(delete_btn_td)
+
+
+      applicant_list.appendChild(tr)
+    }
+  }
+  getAllApplicants()
+</script>
+
+<script>
+  var list_applicant = []
+  applicant_list.addEventListener('click', async (e) => {
+    if (e.target.className == 'Edit') {
+      const tr = e.target.parentElement
+  
+       const index_of_item=$("tr").index(tr)-1
+     
+    
+      window.location.replace("editApplicant.html?ic_num=" + list_applicant[index_of_item]?.ic_num);
+    }
+
+    if (e.target.className == 'Delete') {
+      const tr = e.target.parentElement
+
+      const return_data = await $.ajax(
+        "https://hdmerchantbackend.herokuapp.com/applicant/delete", {
+        type: 'post', // http// data to submit
+        data: {
+          ic_num: list_applicant[$("tr").index(tr) - 1]?.ic_num,
+        },
+        success: function (data, status, xhr) { },
+        error: function (jqXhr, textStatus, errorMessage) {
+          $('p').append('Error: ' + errorMessage);
+        }
+      })
+
+      if (return_data == true) {
+        list_applicant.splice($("tr").index(tr), 1)
+        tr.parentNode.removeChild(tr)
+        console.table(list_applicant)
+      }
+    }
+  });
+</script>
+
+</html>

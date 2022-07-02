@@ -6,7 +6,7 @@
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body style="background-color: #98AFC7;">
@@ -48,29 +48,111 @@
     <table class="table table-light table-hover table-striped">
       <thead>
         <tr>
-          <th>No.</th>
           <th>Name</th>
           <th>IC Number</th>
-          <th>Generate PDF</th>
-          <th>Option</th>
+          <!-- <th>View PDF</th> -->
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th colspan="2">Option</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>i</td>
-          <td>name</td>
-          <td>ic_num</td>
-          <td>
-            <button type="button" class="btn btn-sm btn-outline-success" @onclick="Download">Download</button>
-          </td>
-          <td>
-            <a class="btn btn-sm btn-outline-primary" href="addApplicant.html">Edit</a>
-            <button type="button" class="btn btn-sm btn-outline-danger" @onclick="Delete">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody id="application-list">
+              </tbody>
     </table>
   </div>
 </body>
+<script>
+  const application_list = document.querySelector('#application-list')
+  const getAllApplicants = async () => {
+    list_application = []
+    list_application = await $.ajax(
+      "https://hdmerchantbackend.herokuapp.com/application/all", {
+        type: 'get', // http// data to submit
+        success: function(data, status, xhr) {},
+        error: function(jqXhr, textStatus, errorMessage) {
+          $('p').append('Error: ' + errorMessage);
+        }
+      })
+
+    for (const application of list_application) {
+
+      const tr = document.createElement('tr')
+      const name_td = document.createElement('td')
+      const ic_num_td = document.createElement('td')
+      const address_td = document.createElement('td')
+      const phone_num_td = document.createElement('td')
+      const email_td = document.createElement('td')
+      const delete_btn_td = document.createElement('td')
+      const edit_btn_td = document.createElement('td')
+
+      name_td.textContent = application?.name
+      ic_num_td.textContent = application?.ic_num
+      address_td.textContent = application?.address
+      phone_num_td.textContent = application?.phone_num
+      email_td.textContent = application?.email
+      edit_btn_td.textContent = 'Edit'
+      delete_btn_td.textContent = 'Delete'
+
+
+      name_td.setAttribute('name', "name")
+      ic_num_td.setAttribute('name', "ic_num")
+      address_td.setAttribute('name', "address")
+      phone_num_td.setAttribute('name', "phone_num")
+      email_td.setAttribute('name', "email")
+      edit_btn_td.classList.add('Edit')
+      delete_btn_td.classList.add('Delete')
+
+
+      tr.appendChild(name_td)
+      tr.appendChild(ic_num_td)
+      tr.appendChild(address_td)
+      tr.appendChild(phone_num_td)
+      tr.appendChild(email_td)
+      tr.appendChild(edit_btn_td)
+      tr.appendChild(delete_btn_td)
+
+
+      application_list.appendChild(tr)
+    }
+  }
+  getAllApplicants()
+</script>
+
+<script>
+  var list_application = []
+  application_list.addEventListener('click', async (e) => {
+    if (e.target.className == 'Edit') {
+      const tr = e.target.parentElement
+
+      const index_of_item = $("tr").index(tr) - 1
+
+
+      window.location.replace("editCertificate.html?ic_num=" + list_application[index_of_item]?.ic_num);
+    }
+
+    if (e.target.className == 'Delete') {
+      const tr = e.target.parentElement
+
+      const return_data = await $.ajax(
+        "https://hdmerchantbackend.herokuapp.com/application/delete", {
+          type: 'post', // http// data to submit
+          data: {
+            ic_num: list_application[$("tr").index(tr) - 1]?.ic_num,
+          },
+          success: function(data, status, xhr) {},
+          error: function(jqXhr, textStatus, errorMessage) {
+            $('p').append('Error: ' + errorMessage);
+          }
+        })
+
+      if (return_data == true) {
+        list_application.splice($("tr").index(tr), 1)
+        tr.parentNode.removeChild(tr)
+        console.table(list_application)
+      }
+    }
+  });
+</script>
 
 </html>

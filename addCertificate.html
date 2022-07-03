@@ -74,21 +74,11 @@
             <label>Email</label>
             <input type="email" id="email" name="email" class="form-control" required>
           </div>
-          <!-- <label>Result</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="" id="result" checked>
-            <label class="form-check-label">
-              Approved
-            </label>
+          <div class="form-outline mb-2">
+            <label>Upload Certificate</label>
+            <input class="form-control" id="cert_app" name="cert_app" type="file" id="formFile">
+         
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" value="" id="result">
-            <label class="form-check-label">
-              Disqualified
-            </label>
-          </div>
-          <label> Reason</label>
-          <input type="text" id="reason" class="form-control" required> -->
       </div>
       <div class="col-4">
         <div class="d-grid gap-2 col-6 mx-auto">
@@ -103,6 +93,24 @@
 
 </body>
 <script>
+
+  var hash_file =""
+document.querySelector("#cert_app").addEventListener("change", function () {
+
+  // console.log(this.files);
+  const reader = new FileReader();
+
+  reader.addEventListener("load", () => {
+    console.log("display_result")
+    hash_file=reader.result
+  });
+
+  reader.readAsDataURL(this.files[0]);
+});
+
+
+</script>
+<script>
   const add_attribute_button = document.querySelector('#add_attribute_button')
 
   add_attribute_button.addEventListener('click', async (e) => {
@@ -111,6 +119,8 @@
     const address = document.querySelector('input[name="address"]').value
     const phone_num = document.querySelector('input[name="phone_num"]').value
     const email = document.querySelector('input[name="email"]').value
+    console.log("result")
+    // console.log(hash_file)
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/add", {
       type: 'post', // http method
       data: {
@@ -119,6 +129,7 @@
         address: address,
         phone_num: phone_num,
         email: email,
+        hash_file: hash_file,
       }, // data to submit
       success: function (data, status, xhr) { },
       error: function (jqXhr, textStatus, errorMessage) {

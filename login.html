@@ -55,11 +55,11 @@
     const email = document.querySelector('input[name="email"]').value
     const password = document.querySelector('input[name="password"]').value
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/staff/login", {
-      type: 'post', // http method
+      type: 'post',
       data: {
         email: email,
         password: password
-      }, // data to submit
+      }, 
       success: function (data, status, xhr) { },
       error: function (jqXhr, textStatus, errorMessage) {
         $('p').append('Error: ' + errorMessage);

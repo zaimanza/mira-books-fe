@@ -77,12 +77,10 @@
                         <label>Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
-
-                    <!-- <div class="form-outline mb-4">
-            <label>Upload Certificate</label>
-            <input class="form-control" id="cert" name="cert" type="file" id="formFile">
-          </div> -->
-
+                    <div class="form-outline mb-2">
+                        <label>Upload Certificate</label>
+                        <input class="form-control" id="cert_app" name="cert_app" type="file" id="formFile">
+                    </div>
             </div>
             <div class="col-4">
                 <div class="d-grid gap-2 col-6 mx-auto">
@@ -94,6 +92,25 @@
             </form>
         </div>
 </body>
+
+<script>
+
+    var hash_file = ""
+    document.querySelector("#cert_app").addEventListener("change", function () {
+
+        // console.log(this.files);
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            console.log("display_result")
+            hash_file = reader.result
+        });
+
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+</script>
 <script>
     const ic_num_param = new URLSearchParams(window.location.search).get('ic_num')
 
@@ -125,6 +142,8 @@
         const address = document.querySelector('input[name="address"]').value
         const phone_num = document.querySelector('input[name="phone_num"]').value
         const email = document.querySelector('input[name="email"]').value
+        console.log("result")
+
         const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/update", {
             type: 'post', // http method
             data: {
@@ -133,6 +152,7 @@
                 address: address,
                 phone_num: phone_num,
                 email: email,
+                hash_file: hash_file,
             }, // data to submit
             success: function (data, status, xhr) { },
             error: function (jqXhr, textStatus, errorMessage) {

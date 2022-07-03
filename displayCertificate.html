@@ -4,8 +4,12 @@
 <head>
   <title>Certicate's Record</title>
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
@@ -15,7 +19,8 @@
       <a class="navbar-brand" href="#">
         <img src="logo.jpg" alt="logo" width="70" height="60">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -31,7 +36,8 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               User
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -50,15 +56,15 @@
         <tr>
           <th>Name</th>
           <th>IC Number</th>
-          <!-- <th>View PDF</th> -->
           <th>Address</th>
           <th>Phone Number</th>
           <th>Email</th>
+          <th>View PDF</th>
           <th colspan="2">Option</th>
         </tr>
       </thead>
       <tbody id="application-list">
-              </tbody>
+      </tbody>
     </table>
   </div>
 </body>
@@ -68,12 +74,12 @@
     list_application = []
     list_application = await $.ajax(
       "https://hdmerchantbackend.herokuapp.com/application/all", {
-        type: 'get', // http// data to submit
-        success: function(data, status, xhr) {},
-        error: function(jqXhr, textStatus, errorMessage) {
-          $('p').append('Error: ' + errorMessage);
-        }
-      })
+      type: 'get', // http// data to submit
+      success: function (data, status, xhr) { },
+      error: function (jqXhr, textStatus, errorMessage) {
+        $('p').append('Error: ' + errorMessage);
+      }
+    })
 
     for (const application of list_application) {
 
@@ -83,6 +89,7 @@
       const address_td = document.createElement('td')
       const phone_num_td = document.createElement('td')
       const email_td = document.createElement('td')
+      const view_btn_td = document.createElement('td')
       const delete_btn_td = document.createElement('td')
       const edit_btn_td = document.createElement('td')
 
@@ -91,6 +98,7 @@
       address_td.textContent = application?.address
       phone_num_td.textContent = application?.phone_num
       email_td.textContent = application?.email
+      view_btn_td.textContent = 'View'
       edit_btn_td.textContent = 'Edit'
       delete_btn_td.textContent = 'Delete'
 
@@ -100,6 +108,7 @@
       address_td.setAttribute('name', "address")
       phone_num_td.setAttribute('name', "phone_num")
       email_td.setAttribute('name', "email")
+      view_btn_td.classList.add('View')
       edit_btn_td.classList.add('Edit')
       delete_btn_td.classList.add('Delete')
 
@@ -109,6 +118,7 @@
       tr.appendChild(address_td)
       tr.appendChild(phone_num_td)
       tr.appendChild(email_td)
+      tr.appendChild(view_btn_td)
       tr.appendChild(edit_btn_td)
       tr.appendChild(delete_btn_td)
 
@@ -122,6 +132,34 @@
 <script>
   var list_application = []
   application_list.addEventListener('click', async (e) => {
+    if (e.target.className == 'View') {
+      const tr = e.target.parentElement
+
+      const index_of_item = $("tr").index(tr) - 1
+
+
+      window.location.replace("pagePDF.html?hash_file=" + list_application[index_of_item]?.hash_file);
+    // }
+    // if (e.target.className == 'View') {
+    //   const tr = e.target.parentElement
+
+    //   const index_of_item = $("tr").index(tr) - 1
+
+
+    //   window.location.replace("pagePDF.html?hash_file=" + list_application[index_of_item]?.hash_file);
+//
+//       const hash_file_param = new URLSearchParams(window.location.search).get('hash_file')
+// document.addEventListener("DOMContentLoaded", () => {
+//   const recentPDFUrl = hash_file_param;
+// console.log(hash_file_param)
+//   if (recentPDFUrl) {
+
+//     document.querySelector("#view_cert").setAttribute("src", recentPDFUrl);
+//   }
+// });
+
+    }
+
     if (e.target.className == 'Edit') {
       const tr = e.target.parentElement
 
@@ -136,15 +174,15 @@
 
       const return_data = await $.ajax(
         "https://hdmerchantbackend.herokuapp.com/application/delete", {
-          type: 'post', // http// data to submit
-          data: {
-            ic_num: list_application[$("tr").index(tr) - 1]?.ic_num,
-          },
-          success: function(data, status, xhr) {},
-          error: function(jqXhr, textStatus, errorMessage) {
-            $('p').append('Error: ' + errorMessage);
-          }
-        })
+        type: 'post', // http// data to submit
+        data: {
+          ic_num: list_application[$("tr").index(tr) - 1]?.ic_num,
+        },
+        success: function (data, status, xhr) { },
+        error: function (jqXhr, textStatus, errorMessage) {
+          $('p').append('Error: ' + errorMessage);
+        }
+      })
 
       if (return_data == true) {
         list_application.splice($("tr").index(tr), 1)

@@ -105,7 +105,7 @@
       type: 'get',
       success: function(data, status, xhr) {},
       error: function(jqXhr, textStatus, errorMessage) {
-        $('p').append('Error: ' + errorMessage);
+        alert("IC number not found")
       }
     })
     console.log(returnData)
@@ -135,7 +135,7 @@
     const area = document.querySelector('input[name="area"]').value
     const state = document.querySelector('input[name="state"]').value
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/update", {
-      type: 'post', 
+      type: 'post',
       data: {
         applicant_name: applicant_name,
         ic_num: ic_num,
@@ -148,7 +148,7 @@
       },
       success: function(data, status, xhr) {},
       error: function(jqXhr, textStatus, errorMessage) {
-        $('p').append('Error: ' + errorMessage);
+        alert("Update error")
       }
     })
     window.location.replace("displayApplicant.html");

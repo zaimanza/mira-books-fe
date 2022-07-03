@@ -78,7 +78,7 @@
     console.log("getting_data")
     list_staff = await $.ajax(
       "https://hdmerchantbackend.herokuapp.com/staff/all", {
-      type: 'get', // http// data to submit
+      type: 'get',
       success: function (data, status, xhr) { },
       error: function (jqXhr, textStatus, errorMessage) {
         $('p').append('Error: ' + errorMessage);
@@ -166,15 +166,15 @@
 
       const return_data = await $.ajax(
         "https://hdmerchantbackend.herokuapp.com/staff/delete", {
-          type: 'post', // http// data to submit
-          data: {
-            staff_id: list_staff[$("tr").index(tr) - 1]?.staff_id,
-          },
-          success: function(data, status, xhr) {},
-          error: function(jqXhr, textStatus, errorMessage) {
-            $('p').append('Error: ' + errorMessage);
-          }
-        })
+        type: 'post',
+        data: {
+          staff_id: list_staff[$("tr").index(tr) - 1]?.staff_id,
+        },
+        success: function (data, status, xhr) { },
+        error: function (jqXhr, textStatus, errorMessage) {
+          $('p').append('Error: ' + errorMessage);
+        }
+      })
 
       if (return_data == true) {
         list_staff.splice($("tr").index(tr), 1)

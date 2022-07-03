@@ -74,7 +74,7 @@
     list_application = []
     list_application = await $.ajax(
       "https://hdmerchantbackend.herokuapp.com/application/all", {
-      type: 'get', // http// data to submit
+      type: 'get', 
       success: function (data, status, xhr) { },
       error: function (jqXhr, textStatus, errorMessage) {
         $('p').append('Error: ' + errorMessage);
@@ -136,27 +136,16 @@
       const tr = e.target.parentElement
 
       const index_of_item = $("tr").index(tr) - 1
+      const hash_file_param = list_application[index_of_item]?.hash_file
 
 
-      window.location.replace("pagePDF.html?hash_file=" + list_application[index_of_item]?.hash_file);
-    // }
-    // if (e.target.className == 'View') {
-    //   const tr = e.target.parentElement
+ function debugBase64(base64URL){
+    var win = window.open();
+    win.document.write('<iframe src="' + base64URL  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+}
 
-    //   const index_of_item = $("tr").index(tr) - 1
+debugBase64(hash_file_param);
 
-
-    //   window.location.replace("pagePDF.html?hash_file=" + list_application[index_of_item]?.hash_file);
-//
-//       const hash_file_param = new URLSearchParams(window.location.search).get('hash_file')
-// document.addEventListener("DOMContentLoaded", () => {
-//   const recentPDFUrl = hash_file_param;
-// console.log(hash_file_param)
-//   if (recentPDFUrl) {
-
-//     document.querySelector("#view_cert").setAttribute("src", recentPDFUrl);
-//   }
-// });
 
     }
 
@@ -174,7 +163,7 @@
 
       const return_data = await $.ajax(
         "https://hdmerchantbackend.herokuapp.com/application/delete", {
-        type: 'post', // http// data to submit
+        type: 'post', 
         data: {
           ic_num: list_application[$("tr").index(tr) - 1]?.ic_num,
         },

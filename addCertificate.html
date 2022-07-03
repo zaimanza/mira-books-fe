@@ -97,7 +97,6 @@
   var hash_file =""
 document.querySelector("#cert_app").addEventListener("change", function () {
 
-  // console.log(this.files);
   const reader = new FileReader();
 
   reader.addEventListener("load", () => {
@@ -120,9 +119,8 @@ document.querySelector("#cert_app").addEventListener("change", function () {
     const phone_num = document.querySelector('input[name="phone_num"]').value
     const email = document.querySelector('input[name="email"]').value
     console.log("result")
-    // console.log(hash_file)
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/add", {
-      type: 'post', // http method
+      type: 'post', 
       data: {
         name: name,
         ic_num: ic_num,
@@ -130,7 +128,7 @@ document.querySelector("#cert_app").addEventListener("change", function () {
         phone_num: phone_num,
         email: email,
         hash_file: hash_file,
-      }, // data to submit
+      }, 
       success: function (data, status, xhr) { },
       error: function (jqXhr, textStatus, errorMessage) {
         $('p').append('Error: ' + errorMessage);

@@ -128,6 +128,7 @@
         const address = document.querySelector('input[name="address"]').value = returnData?.address
         const phone_num = document.querySelector('input[name="phone_num"]').value = returnData?.phone_num
         const email = document.querySelector('input[name="email"]').value = returnData?.email
+        console.log("result")
 
     }
     initiaFunction()
@@ -144,16 +145,21 @@
         const email = document.querySelector('input[name="email"]').value
         console.log("result")
 
-        const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/update", {
-            type: 'post', // http method
-            data: {
+        var data = {
                 name: name,
                 ic_num: ic_num,
                 address: address,
                 phone_num: phone_num,
                 email: email,
-                hash_file: hash_file,
-            }, // data to submit
+            }
+            
+            if(hash_file){
+                data.hash_file=hash_file
+            }
+
+        const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/update", {
+            type: 'post', // http method
+            data: data, // data to submit
             success: function (data, status, xhr) { },
             error: function (jqXhr, textStatus, errorMessage) {
                 $('p').append('Error: ' + errorMessage);

@@ -135,7 +135,7 @@
     const area = document.querySelector('input[name="area"]').value
     const state = document.querySelector('input[name="state"]').value
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/applicant/update", {
-      type: 'post', // http method
+      type: 'post', 
       data: {
         applicant_name: applicant_name,
         ic_num: ic_num,
@@ -145,7 +145,7 @@
         gender: gender,
         area: area,
         state: state
-      }, // data to submit
+      },
       success: function(data, status, xhr) {},
       error: function(jqXhr, textStatus, errorMessage) {
         $('p').append('Error: ' + errorMessage);

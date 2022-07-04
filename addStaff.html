@@ -130,10 +130,10 @@
         gender: gender,
         district: district,
         state: state
-      }, 
+      },
       success: function(data, status, xhr) {},
       error: function(jqXhr, textStatus, errorMessage) {
-        $('p').append('Error: ' + errorMessage);
+        alert("Staff id number has already been used")
       }
     })
     window.location.replace("displayStaff.html");

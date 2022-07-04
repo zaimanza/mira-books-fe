@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-    <title> Edit Staff</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title> Edit Staff</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body style="background-color: #98AFC7;">
@@ -36,144 +33,135 @@
                         <a class="nav-link text-white" href="addCertificate.html">Job Application Form</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            User
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="addStaff.html">Staff</a></li>
-                            <li><a class="dropdown-item" href="login.html">LogOut</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container py-5 h-100">
+    <h1 class="pb-3">Edit Staff</h1>
+    <div class="row">
+      <div class="col-8">
+        <form>
+          <div class="form-outline mb-2">
+            <label>Staff Id</label>
+            <input type="text" id="staff_id" name="staff_id" class="form-control" disabled>
+          </div>
+          <div class="form-outline mb-2">
+            <label> Password</label>
+            <input type="text" id="password" name="password" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label>Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label> IC Number</label>
+            <input type="tel" id="ic_num" name="ic_num" pattern="[0-9]{12}" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label> Phone Number</label>
+            <input type="tel" id="phone_num" name="phone_num" pattern="[0]{1}[0-9]{9}" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label>Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label>Address</label>
+            <input type="text" class="form-control" id="address" name="address" required></input>
+          </div>
+          <div class="form-outline mb-2">
+            <label>Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" required></input>
+          </div>
+          <div class="form-outline mb-2">
+            <label> Area </label>
+            <input type="text" id="district" name="district" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label> State </label>
+            <input type="text" id="state" name="state" class="form-control" required>
+          </div>
+      </div>
 
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+      <div class="col-4">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="displayStaff.html" class="btn btn-secondary border border-dark">Back</a>
+          <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add
+            Record</button>
         </div>
-    </nav>
-    <div class="container py-5 h-100">
-        <h1 class="pb-3">Edit Staff</h1>
-        <div class="row">
-            <div class="col-8">
-                <form>
-                    <div class="form-outline mb-2">
-                        <label>Staff Id</label>
-                        <input type="text" id="staff_id" name="staff_id" class="form-control" disabled>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label> Password</label>
-                        <input type="text" id="password" name="password" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label>Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label> IC Number</label>
-                        <input type="tel" id="ic_num" name="ic_num" pattern="[0-9]{12}" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label> Phone Number</label>
-                        <input type="tel" id="phone_num" name="phone_num" pattern="[0]{1}[0-9]{9}" class="form-control"
-                            required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label>Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label>Address</label>
-                        <input type="text" class="form-control" id="address" name="address" required></input>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label>Gender</label>
-                        <input type="text" class="form-control" id="gender" name="gender" required></input>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label> Area </label>
-                        <input type="text" id="district" name="district" class="form-control" required>
-                    </div>
-                    <div class="form-outline mb-2">
-                        <label> State </label>
-                        <input type="text" id="state" name="state" class="form-control" required>
-                    </div>
-            </div>
-
-            <div class="col-4">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="displayStaff.html" class="btn btn-secondary border border-dark">Back</a>
-                    <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add
-                        Record</button>
-                </div>
-            </div>
-            </form>
-        </div>
+      </div>
+      </form>
+    </div>
 
 </body>
 
 
 <script>
-    const staff_id_param = new URLSearchParams(window.location.search).get('staff_id')
-  
-    const initiaFunction = async () => {
-      const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/staff/" + staff_id_param, {
-        type: 'get',
-        success: function(data, status, xhr) {},
-        error: function(jqXhr, textStatus, errorMessage) {
-          $('p').append('Error: ' + errorMessage);
-        }
-      })
-      console.log(returnData)
-      const staff_id = document.querySelector('input[name="staff_id"]').value = returnData?.staff_id
-        const password = document.querySelector('input[name="password"]').value = returnData?.password
-        const name = document.querySelector('input[name="name"]').value = returnData?.name
-        const ic_num = document.querySelector('input[name="ic_num"]').value = returnData?.ic_num
-        const phone_num = document.querySelector('input[name="phone_num"]').value = returnData?.phone_num
-        const email = document.querySelector('input[name="email"]').value = returnData?.email
-        const address = document.querySelector('input[name="address"]').value = returnData?.address
-        const gender = document.querySelector('input[name="gender"]').value = returnData?.gender
-        const district = document.querySelector('input[name="district"]').value = returnData?.district
-        const state = document.querySelector('input[name="state"]').value = returnData?.state
-  
-    }
-    initiaFunction()
-  </script>
-  
-  <script>
-    const add_attribute_button = document.querySelector('#add_attribute_button')
-  
-    add_attribute_button.addEventListener('click', async (e) => {
+  const staff_id_param = new URLSearchParams(window.location.search).get('staff_id')
+
+  const initiaFunction = async () => {
+    const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/staff/" + staff_id_param, {
+      type: 'get',
+      success: function(data, status, xhr) {},
+      error: function(jqXhr, textStatus, errorMessage) {
+        alert("Stuff id not found")
+      }
+    })
+    console.log(returnData)
+    const staff_id = document.querySelector('input[name="staff_id"]').value = returnData?.staff_id
+    const password = document.querySelector('input[name="password"]').value = returnData?.password
+    const name = document.querySelector('input[name="name"]').value = returnData?.name
+    const ic_num = document.querySelector('input[name="ic_num"]').value = returnData?.ic_num
+    const phone_num = document.querySelector('input[name="phone_num"]').value = returnData?.phone_num
+    const email = document.querySelector('input[name="email"]').value = returnData?.email
+    const address = document.querySelector('input[name="address"]').value = returnData?.address
+    const gender = document.querySelector('input[name="gender"]').value = returnData?.gender
+    const district = document.querySelector('input[name="district"]').value = returnData?.district
+    const state = document.querySelector('input[name="state"]').value = returnData?.state
+
+  }
+  initiaFunction()
+</script>
+
+<script>
+  const add_attribute_button = document.querySelector('#add_attribute_button')
+
+  add_attribute_button.addEventListener('click', async (e) => {
 
     const staff_id = document.querySelector('input[name="staff_id"]').value
-      const password = document.querySelector('input[name="password"]').value
-      const name = document.querySelector('input[name="name"]').value
-      const ic_num = document.querySelector('input[name="ic_num"]').value
-      const phone_num = document.querySelector('input[name="phone_num"]').value
-      const email = document.querySelector('input[name="email"]').value
-      const address = document.querySelector('input[name="address"]').value
-      const gender = document.querySelector('input[name="gender"]').value
-      const district = document.querySelector('input[name="district"]').value
-      const state = document.querySelector('input[name="state"]').value
-      const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/staff/update", {
-        type: 'post', 
-        data: {
-            staff_id: staff_id,
-          password: password,
-          name: name,
-          ic_num: ic_num,
-          phone_num: phone_num,
-          email: email,
-          address: address,
-          gender: gender,
-          district: district,
-          state: state
-        }, 
-        success: function(data, status, xhr) {},
-        error: function(jqXhr, textStatus, errorMessage) {
-          $('p').append('Error: ' + errorMessage);
-        }
-      })
-      window.location.replace("displayStaff.html");
-    });
-  </script>
+    const password = document.querySelector('input[name="password"]').value
+    const name = document.querySelector('input[name="name"]').value
+    const ic_num = document.querySelector('input[name="ic_num"]').value
+    const phone_num = document.querySelector('input[name="phone_num"]').value
+    const email = document.querySelector('input[name="email"]').value
+    const address = document.querySelector('input[name="address"]').value
+    const gender = document.querySelector('input[name="gender"]').value
+    const district = document.querySelector('input[name="district"]').value
+    const state = document.querySelector('input[name="state"]').value
+    const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/staff/update", {
+      type: 'post',
+      data: {
+        staff_id: staff_id,
+        password: password,
+        name: name,
+        ic_num: ic_num,
+        phone_num: phone_num,
+        email: email,
+        address: address,
+        gender: gender,
+        district: district,
+        state: state
+      },
+      success: function(data, status, xhr) {},
+      error: function(jqXhr, textStatus, errorMessage) {
+        alert("Update error")
+      }
+    })
+    window.location.replace("displayStaff.html");
+  });
+</script>
+
 </html>

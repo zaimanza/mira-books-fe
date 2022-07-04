@@ -71,10 +71,10 @@
     list_applicant = []
     list_applicant = await $.ajax(
       "https://hdmerchantbackend.herokuapp.com/applicant/all", {
-        type: 'get', 
+        type: 'get',
         success: function(data, status, xhr) {},
         error: function(jqXhr, textStatus, errorMessage) {
-          $('p').append('Error: ' + errorMessage);
+          alert("No applicant found")
         }
       })
 
@@ -151,13 +151,13 @@
 
       const return_data = await $.ajax(
         "https://hdmerchantbackend.herokuapp.com/applicant/delete", {
-          type: 'post', 
+          type: 'post',
           data: {
             ic_num: list_applicant[$("tr").index(tr) - 1]?.ic_num,
           },
           success: function(data, status, xhr) {},
           error: function(jqXhr, textStatus, errorMessage) {
-            $('p').append('Error: ' + errorMessage);
+            alert("Error on delete")
           }
         })
 

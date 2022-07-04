@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title> Add Certificate</title>
+  <title> Job Applicant Form</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -16,7 +16,7 @@
 <body style="background-color: #98AFC7;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.html">
         <img src="logo.jpg" alt="logo" width="70" height="60">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,10 +29,10 @@
             <a class="nav-link text-white" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addApplicant.html">Applicant</a>
+            <a class="nav-link text-white" href="jobVacancy.html">Job Vacancy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
+            <a class="nav-link text-white" href="addCertificate.html">Job Application Form</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -50,7 +50,7 @@
     </div>
   </nav>
   <div class="container py-5 h-100">
-    <h1 class="pb-3"> Add Certificate</h1>
+    <h1 class="pb-3"> Job Applicant Form</h1>
     <div class="row">
       <div class="col-8">
         <form>
@@ -75,6 +75,18 @@
             <input type="email" id="email" name="email" class="form-control" required>
           </div>
           <div class="form-outline mb-2">
+            <label>Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" required></input>
+          </div>
+          <div class="form-outline mb-2">
+            <label> Area </label>
+            <input type="text" id="area" name="area" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label> State </label>
+            <input type="text" id="state" name="state" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
             <label>Upload Certificate</label>
             <input class="form-control" id="cert_app" name="cert_app" type="file" id="formFile">
          
@@ -82,9 +94,9 @@
       </div>
       <div class="col-4">
         <div class="d-grid gap-2 col-6 mx-auto">
-          <a href="displayCertificate.html" class="btn btn-secondary border border-dark">View Certificates</a>
+          <a href="displayCertificate.html" class="btn btn-secondary border border-dark">View Job Applicants</a>
           <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add
-            Certificate</button>
+            Applicant</button>
         </div>
       </div>
       </form>
@@ -118,6 +130,9 @@ document.querySelector("#cert_app").addEventListener("change", function () {
     const address = document.querySelector('input[name="address"]').value
     const phone_num = document.querySelector('input[name="phone_num"]').value
     const email = document.querySelector('input[name="email"]').value
+    const gender = document.querySelector('input[name="gender"]').value
+    const area = document.querySelector('input[name="area"]').value
+    const state = document.querySelector('input[name="state"]').value
     console.log("result")
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/add", {
       type: 'post', 
@@ -127,6 +142,9 @@ document.querySelector("#cert_app").addEventListener("change", function () {
         address: address,
         phone_num: phone_num,
         email: email,
+        gender: gender,
+        area: area,
+        state: state,
         hash_file: hash_file,
       }, 
       success: function (data, status, xhr) { },

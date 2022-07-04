@@ -2,21 +2,25 @@
 <html lang="en">
 
 <head>
-  <title> Add Certificate</title>
+  <title> Job Applicant Form</title>
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body style="background-color: #98AFC7;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.html">
         <img src="logo.jpg" alt="logo" width="70" height="60">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,14 +29,15 @@
             <a class="nav-link text-white" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addApplicant.html">Applicant</a>
+            <a class="nav-link text-white" href="jobVacancy.html">Job Vacancy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
+            <a class="nav-link text-white" href="addCertificate.html">Job Application Form</a>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               User
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -45,7 +50,7 @@
     </div>
   </nav>
   <div class="container py-5 h-100">
-    <h1 class="pb-3"> Add Certificate</h1>
+    <h1 class="pb-3"> Job Applicant Form</h1>
     <div class="row">
       <div class="col-8">
         <form>
@@ -70,16 +75,28 @@
             <input type="email" id="email" name="email" class="form-control" required>
           </div>
           <div class="form-outline mb-2">
+            <label>Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" required></input>
+          </div>
+          <div class="form-outline mb-2">
+            <label> Area </label>
+            <input type="text" id="area" name="area" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
+            <label> State </label>
+            <input type="text" id="state" name="state" class="form-control" required>
+          </div>
+          <div class="form-outline mb-2">
             <label>Upload Certificate</label>
             <input class="form-control" id="cert_app" name="cert_app" type="file" id="formFile">
-
+         
           </div>
       </div>
       <div class="col-4">
         <div class="d-grid gap-2 col-6 mx-auto">
-          <a href="displayCertificate.html" class="btn btn-secondary border border-dark">View Certificates</a>
+          <a href="displayCertificate.html" class="btn btn-secondary border border-dark">View Job Applicants</a>
           <button type="button" class="btn btn-secondary border border-dark" id="add_attribute_button">Add
-            Certificate</button>
+            Applicant</button>
         </div>
       </div>
       </form>
@@ -88,19 +105,21 @@
 
 </body>
 <script>
-  var hash_file = ""
-  document.querySelector("#cert_app").addEventListener("change", function() {
 
-    const reader = new FileReader();
+  var hash_file =""
+document.querySelector("#cert_app").addEventListener("change", function () {
 
-    reader.addEventListener("load", () => {
-      console.log("display_result")
-      hash_file = reader.result
-      console.log(hash_file)
-    });
+  const reader = new FileReader();
 
-    reader.readAsDataURL(this.files[0]);
+  reader.addEventListener("load", () => {
+    console.log("display_result")
+    hash_file=reader.result
   });
+
+  reader.readAsDataURL(this.files[0]);
+});
+
+
 </script>
 <script>
   const add_attribute_button = document.querySelector('#add_attribute_button')
@@ -111,25 +130,26 @@
     const address = document.querySelector('input[name="address"]').value
     const phone_num = document.querySelector('input[name="phone_num"]').value
     const email = document.querySelector('input[name="email"]').value
-    var data = {
-      name: name,
-      ic_num: ic_num,
-      address: address,
-      phone_num: phone_num,
-      email: email,
-    }
-
-    if (hash_file) {
-      data.hash_file = hash_file
-    }
-
-    console.log(data)
+    const gender = document.querySelector('input[name="gender"]').value
+    const area = document.querySelector('input[name="area"]').value
+    const state = document.querySelector('input[name="state"]').value
+    console.log("result")
     const returnData = await $.ajax("https://hdmerchantbackend.herokuapp.com/application/add", {
-      type: 'post',
-      data: data, // data to submit
-      success: function(data, status, xhr) {},
-      error: function(jqXhr, textStatus, errorMessage) {
-        alert("IC number has already been used")
+      type: 'post', 
+      data: {
+        name: name,
+        ic_num: ic_num,
+        address: address,
+        phone_num: phone_num,
+        email: email,
+        gender: gender,
+        area: area,
+        state: state,
+        hash_file: hash_file,
+      }, 
+      success: function (data, status, xhr) { },
+      error: function (jqXhr, textStatus, errorMessage) {
+        $('p').append('Error: ' + errorMessage);
       }
     })
     window.location.replace("displayCertificate.html");

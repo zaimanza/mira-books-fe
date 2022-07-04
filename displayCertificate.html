@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Certicate's Record</title>
+  <title>Job Applicants Record</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -16,7 +16,7 @@
 <body style="background-color: #98AFC7;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.html">
         <img src="logo.jpg" alt="logo" width="70" height="60">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,10 +29,10 @@
             <a class="nav-link text-white" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addApplicant.html">Applicant</a>
+            <a class="nav-link text-white" href="jobVacancy.html">Job Vacancy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="addCertificate.html">Applications Certificate</a>
+            <a class="nav-link text-white" href="addCertificate.html">Job Application Form</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -50,7 +50,7 @@
     </div>
   </nav>
   <div class="container py-5 h-100">
-    <h1 class="pb-3"> Certificate's Record</h1>
+    <h1 class="pb-3"> Job Applicants Record</h1>
     <table class="table table-light table-hover table-striped">
       <thead>
         <tr>
@@ -59,6 +59,9 @@
           <th>Address</th>
           <th>Phone Number</th>
           <th>Email</th>
+          <th>Gender</th>
+          <th>Area</th>
+          <th>State</th>
           <th>View PDF</th>
           <th colspan="2">Option</th>
         </tr>
@@ -89,6 +92,9 @@
       const address_td = document.createElement('td')
       const phone_num_td = document.createElement('td')
       const email_td = document.createElement('td')
+      const gender_td = document.createElement('td')
+      const area_td = document.createElement('td')
+      const state_td = document.createElement('td')
       const view_btn_td = document.createElement('td')
       const delete_btn_td = document.createElement('td')
       const edit_btn_td = document.createElement('td')
@@ -98,6 +104,9 @@
       address_td.textContent = application?.address
       phone_num_td.textContent = application?.phone_num
       email_td.textContent = application?.email
+      gender_td.textContent = application?.gender
+      area_td.textContent = application?.area
+      state_td.textContent = application?.state
       view_btn_td.textContent = 'View'
       edit_btn_td.textContent = 'Edit'
       delete_btn_td.textContent = 'Delete'
@@ -108,6 +117,9 @@
       address_td.setAttribute('name', "address")
       phone_num_td.setAttribute('name', "phone_num")
       email_td.setAttribute('name', "email")
+      gender_td.setAttribute('name', "gender")
+      area_td.setAttribute('name', "area")
+      state_td.setAttribute('name', "state")
       view_btn_td.classList.add('View')
       edit_btn_td.classList.add('Edit')
       delete_btn_td.classList.add('Delete')
@@ -118,6 +130,9 @@
       tr.appendChild(address_td)
       tr.appendChild(phone_num_td)
       tr.appendChild(email_td)
+      tr.appendChild(gender_td)
+      tr.appendChild(area_td)
+      tr.appendChild(state_td)
       tr.appendChild(view_btn_td)
       tr.appendChild(edit_btn_td)
       tr.appendChild(delete_btn_td)
